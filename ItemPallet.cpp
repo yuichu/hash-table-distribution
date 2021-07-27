@@ -97,7 +97,6 @@ void ItemPallet::addItem(string itemName, unsigned int sku) {
   // hT6{10,hashfct6}{ }
 
     
-
 }
 
 bool ItemPallet::removeItem(unsigned int sku) {
