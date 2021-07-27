@@ -12,37 +12,53 @@ using std::endl;
 // function to return the hash value based on the first digit
 unsigned int hashfct1(unsigned int sku) {
   // TODO: implement this function, then delete the return statement below
-	return 100;
+  unsigned int hashValue;
+  hashValue = sku / 100000;
+	return hashValue;
 }
 
 // function to return the hash value based on the second digit
 unsigned int hashfct2(unsigned int sku) {
    // TODO: implement this function, then delete the return statement below
-	return 100;
+   unsigned int hashValue;
+   hashValue = sku % 100000;
+   hashValue = hashValue / 10000;
+	return hashValue;
 }
 
 // function to return the hash value based on the third digit
 unsigned int hashfct3(unsigned int sku) {
    // TODO: implement this function, then delete the return statement below
-	return 100;
+   unsigned int hashValue;
+   hashValue = sku % 10000;
+   hashValue = hashValue / 1000;
+	return hashValue;
 }
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct4(unsigned int sku) {
    // TODO: implement this function, then delete the return statement below
-	return 100;
+   unsigned int hashValue;
+   hashValue = sku % 1000;
+   hashValue = hashValue / 100;
+	return hashValue;
 }
 
 // function to return the hash value based on the fifth digit
 unsigned int hashfct5(unsigned int sku) {
     // TODO: implement this function, then delete the return statement below
+    unsigned int hashValue;
+    hashValue = sku % 100;
+    hashValue = hashValue / 10;
 	return 100;
 }
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct6(unsigned int sku) {
     // TODO: implement this function, then delete the return statement below
-	return 100;
+    unsigned int hashValue;
+    hashValue = sku % 10;
+	return hashValue;
 }
 
 // Constructor for struct Item
@@ -71,7 +87,17 @@ void ItemPallet::readTextfile(string filename) {
 void ItemPallet::addItem(string itemName, unsigned int sku) {
   // TO BE COMPLETED
   // function that adds the specified SKU to the pallet (i.e., to all hash tables)
+  // typedef std::unordered_map<unsigned int, Item, decltype(&hashfct1)> CustomHashTable;
+  // ItemPallet():
+  // hT1{10,hashfct1},
+  // hT2{10,hashfct2},
+  // hT3{10,hashfct3},
+  // hT4{10,hashfct4},
+  // hT5{10,hashfct5},
+  // hT6{10,hashfct6}{ }
+
     
+
 }
 
 bool ItemPallet::removeItem(unsigned int sku) {
@@ -80,6 +106,7 @@ bool ItemPallet::removeItem(unsigned int sku) {
   // function that removes the pair of glasses specified by the sku from the display
   // if pair is found, then it is removed and the function returns true
   // else returns false
+
 
     return true;
 }
@@ -99,6 +126,7 @@ unsigned int ItemPallet::bestHashing() {
   }
 	*/
 	// Then, calculate the lowest balance
+    
     
     return 100;
 
