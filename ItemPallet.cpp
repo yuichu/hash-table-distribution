@@ -50,7 +50,7 @@ unsigned int hashfct5(unsigned int sku) {
     unsigned int hashValue;
     hashValue = sku % 100;
     hashValue = hashValue / 10;
-	return 100;
+	return hashValue;
 }
 
 // function to return the hash value based on the fourth digit
@@ -96,7 +96,13 @@ void ItemPallet::addItem(string itemName, unsigned int sku) {
   // hT5{10,hashfct5},
   // hT6{10,hashfct6}{ }
 
-    
+  hT1[itemName, sku];
+  hT2[itemName, sku];
+  hT3[itemName, sku];
+  hT4[itemName, sku];
+  hT5[itemName, sku];
+  hT6[itemName, sku];
+
 }
 
 bool ItemPallet::removeItem(unsigned int sku) {
