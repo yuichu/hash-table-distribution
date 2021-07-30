@@ -11,7 +11,6 @@ using std::endl;
 
 // function to return the hash value based on the first digit
 unsigned int hashfct1(unsigned int sku) {
-  // TODO: implement this function, then delete the return statement below
   unsigned int hashValue;
   hashValue = sku / 100000;
 	return hashValue;
@@ -19,7 +18,6 @@ unsigned int hashfct1(unsigned int sku) {
 
 // function to return the hash value based on the second digit
 unsigned int hashfct2(unsigned int sku) {
-   // TODO: implement this function, then delete the return statement below
    unsigned int hashValue;
    hashValue = sku % 100000;
    hashValue = hashValue / 10000;
@@ -28,7 +26,6 @@ unsigned int hashfct2(unsigned int sku) {
 
 // function to return the hash value based on the third digit
 unsigned int hashfct3(unsigned int sku) {
-   // TODO: implement this function, then delete the return statement below
    unsigned int hashValue;
    hashValue = sku % 10000;
    hashValue = hashValue / 1000;
@@ -37,7 +34,6 @@ unsigned int hashfct3(unsigned int sku) {
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct4(unsigned int sku) {
-   // TODO: implement this function, then delete the return statement below
    unsigned int hashValue;
    hashValue = sku % 1000;
    hashValue = hashValue / 100;
@@ -46,7 +42,6 @@ unsigned int hashfct4(unsigned int sku) {
 
 // function to return the hash value based on the fifth digit
 unsigned int hashfct5(unsigned int sku) {
-    // TODO: implement this function, then delete the return statement below
     unsigned int hashValue;
     hashValue = sku % 100;
     hashValue = hashValue / 10;
@@ -55,7 +50,6 @@ unsigned int hashfct5(unsigned int sku) {
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct6(unsigned int sku) {
-    // TODO: implement this function, then delete the return statement below
     unsigned int hashValue;
     hashValue = sku % 10;
 	return hashValue;
@@ -85,56 +79,161 @@ void ItemPallet::readTextfile(string filename) {
 }
 
 void ItemPallet::addItem(string itemName, unsigned int sku) {
-  // TO BE COMPLETED
-  // function that adds the specified SKU to the pallet (i.e., to all hash tables)
-  // typedef std::unordered_map<unsigned int, Item, decltype(&hashfct1)> CustomHashTable;
-  // ItemPallet():
-  // hT1{10,hashfct1},
-  // hT2{10,hashfct2},
-  // hT3{10,hashfct3},
-  // hT4{10,hashfct4},
-  // hT5{10,hashfct5},
-  // hT6{10,hashfct6}{ }
-
   hT1[itemName, sku];
   hT2[itemName, sku];
   hT3[itemName, sku];
   hT4[itemName, sku];
   hT5[itemName, sku];
   hT6[itemName, sku];
-
 }
 
 bool ItemPallet::removeItem(unsigned int sku) {
-   // TODO: implement this function, then delete the return statement below
-
-  // function that removes the pair of glasses specified by the sku from the display
-  // if pair is found, then it is removed and the function returns true
-  // else returns false
-
-
-    return true;
+  hT1.erase(sku);
+  hT2.erase(sku);
+  hT3.erase(sku);
+  hT4.erase(sku);
+  hT5.erase(sku);
+  hT6.erase(sku);
+  return true;
 }
 
+  
+// Pseudocode:
+// for i=0 to 9 do
+//   if number in bucket is less than minimum number do
+//     minimum = number in bucket at position i
+//   if number in bucket is greater than maximum number do
+//     maximum = number in bucket at position i
+// balance = maximum - minimum
+// hashTableNumber = the hash table at which lowest balance is calculated
 unsigned int ItemPallet::bestHashing() {
-  // TODO: implement this function, then delete the return statement below
-    
-  // function that decides the best has function, i.e. the ones among
-  // fct1-fct6 that creates the most balanced hash table for the current
-  // ItemPallet data member allItems
+  unsigned int min = 0;
+  unsigned int max = 0;
+  unsigned int balance = 0;
+  unsigned int hashTableNumber = 0;
 
-	// Hints:
-	// Calculate the balance of each hashtable, one by one.
-	/*
-	 for (unsigned i=0; i<10; ++i) {
-    cout << hT1.bucket_size(i); // Call bucket_size() to get the size of each bucket
+  //hT1
+  min = hT1.bucket_size(0);
+  for (unsigned i=0; i<10; ++i) 
+  {
+    if (hT1.bucket_size(i) < min)
+    {
+      min = hT1.bucket_size(i);
+    }
+    if (hT1.bucket_size(i) > max)
+    {
+      max = hT1.bucket_size(i);
+    }
   }
-	*/
-	// Then, calculate the lowest balance
-    
-    
-    return 100;
+  balance = max - min;
+  hashTableNumber = 1;
 
+  //hT2
+  min = hT2.bucket_size(0);
+  max = 0;
+  for (unsigned i=0; i<10; ++i) 
+  {
+    if (hT2.bucket_size(i) < min)
+    {
+      min = hT2.bucket_size(i);
+    }
+    if (hT2.bucket_size(i) > max)
+    {
+      max = hT2.bucket_size(i);
+    }
+  }
+
+  if (balance > max-min)
+  {
+    balance = max-min;
+    hashTableNumber = 2;
+  }
+
+  //hT3
+  min = hT3.bucket_size(0);
+  max = 0;
+  for (unsigned i=0; i<10; ++i) 
+  {
+    if (hT3.bucket_size(i) < min)
+    {
+      min = hT3.bucket_size(i);
+    }
+    if (hT3.bucket_size(i) > max)
+    {
+      max = hT3.bucket_size(i);
+    }
+  }
+
+  if (balance > max-min)
+  {
+    balance = max-min;
+    hashTableNumber = 3;
+  }
+
+  //hT4
+  min = hT4.bucket_size(0);
+  max = 0;
+  for (unsigned i=0; i<10; ++i) 
+  {
+    if (hT4.bucket_size(i) < min)
+    {
+      min = hT4.bucket_size(i);
+    }
+    if (hT4.bucket_size(i) > max)
+    {
+      max = hT4.bucket_size(i);
+    }
+  }
+  
+  if (balance > max-min)
+  {
+    balance = max-min;
+    hashTableNumber = 4;
+  }
+
+  //hT5
+  min = hT5.bucket_size(0);
+  max = 0;
+  for (unsigned i=0; i<10; ++i) 
+  {
+    if (hT5.bucket_size(i) < min)
+    {
+      min = hT5.bucket_size(i);
+    }
+    if (hT5.bucket_size(i) > max)
+    {
+      max = hT5.bucket_size(i);
+    }
+  }
+  
+  if (balance > max-min)
+  {
+    balance = max-min;
+    hashTableNumber = 5;
+  }
+
+  //hT6
+  min = hT6.bucket_size(0);
+  max = 0;
+  for (unsigned i=0; i<10; ++i) 
+  {
+    if (hT6.bucket_size(i) < min)
+    {
+      min = hT6.bucket_size(i);
+    }
+    if (hT6.bucket_size(i) > max)
+    {
+      max = hT6.bucket_size(i);
+    }  
+  }
+
+  if (balance > max-min)
+  {
+    balance = max-min;
+    hashTableNumber = 6;
+  }
+  
+    return hashTableNumber;
 }
 
 // ALREADY COMPLETED
