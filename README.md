@@ -1,5 +1,4 @@
-# Project-3
-Warehouse Storage Numbering System with SKUs
+# Algorithm Engineering - Project 3
 
 Group members:
 
@@ -9,6 +8,10 @@ Jason Liu jliu96@csu.fullerton.edu
 
 Project Overview:
 
-We are given textfiles that contain itemNames and SKUs.
-Create an unordered_map hashtable that stores and
-calculate the most balanced hashtable for each set of SKUs.
+Given text files of warehouse items and their product numbers, 
+create six different hash functions, each with its own hash table, 
+that calculates an item's hash value and stores the product number in 
+the corresponding item pallet within the hash table.
+
+Once the hash table is generated, determine which hash table creates 
+the most balanced distribution of items across nine item pallets.
